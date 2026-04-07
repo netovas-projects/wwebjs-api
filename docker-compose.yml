@@ -9,10 +9,10 @@ services:
     container_name: wwebjs-api
     restart: always
     ports:
-      - "${PORT:-3000}:3000"
+      - '${PORT:-3000}:3000'
     env_file: .env
     volumes:
-      - ./sessions:/usr/src/app/sessions
+      - wwebjs_sessions:/usr/src/app/sessions
     # Optional healthcheck
     # healthcheck:
     #   test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
@@ -20,3 +20,7 @@ services:
     #   timeout: 10s
     #   retries: 3
     #   start_period: 40s
+
+volumes:
+  wwebjs_sessions:
+    name: wwebjs_sessions
